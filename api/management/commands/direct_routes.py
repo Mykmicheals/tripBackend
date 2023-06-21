@@ -7,7 +7,7 @@ class Command(BaseCommand):
     help = 'Load locations from JSON into the database'
 
     def handle(self, *args, **options):
-        file_path = os.path.join(os.path.dirname(__file__), 'routes.json')
+        file_path = os.path.join(os.path.dirname(__file__), 'direct_routes.json')
         with open(file_path) as file:
             data = json.load(file)
             for key, value in data.items():
@@ -16,12 +16,14 @@ class Command(BaseCommand):
                 to_location = value['to']
                 price = value['price']
                 duration = value['duration']
-                direct_routes = value['direct_routes']
+                transport = value['transport']
                 DirectRoutes.objects.create(
                     number=flight_number,
                     from_location=from_location,
                     to_location=to_location,
                     price=price,
                     duration=duration,
-                    direct_routes=direct_routes
+                    transport=transport
                 )       
+
+

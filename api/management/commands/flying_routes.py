@@ -7,7 +7,7 @@ class Command(BaseCommand):
     help = 'Load locations from JSON into the database'
 
     def handle(self, *args, **options):
-        file_path = os.path.join(os.path.dirname(__file__), 'routes.json')
+        file_path = os.path.join(os.path.dirname(__file__), 'flying_routes.json')
         with open(file_path) as file:
             data = json.load(file)
             for key, value in data.items():

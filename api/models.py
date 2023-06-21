@@ -46,13 +46,15 @@ class FlyingRoutes(models.Model):
     def __str__(self):
         return f"{self.from_location} to {self.to_location}"
 
+
+
 class DirectRoutes(models.Model):
     number = models.IntegerField()
     from_location = models.IntegerField()
     to_location = models.IntegerField()
+    transport = models.IntegerField()
     price = models.FloatField()
     duration = models.IntegerField()
-    direct_routes = models.JSONField()
 
     def __str__(self):
         return f"{self.from_location} to {self.to_location}"
